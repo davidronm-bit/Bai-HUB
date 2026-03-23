@@ -13,14 +13,19 @@ session_start();
     <main class="container">
         <div class="homepage-container">
             <div class="hero-section">
-                <h1 class="game-title">🎰 CASINO GAMES 🎲</h1>
+                <div class="hero-icon">
+                    <img src="img/icons/take-my-money.svg" alt="Take My Money" class="hero-svg" />
+                </div>
+                <h1 class="game-title">CASINO GAMES</h1>
                 <p class="game-subtitle">Choose your game and test your luck!</p>
             </div>
             
             <div class="games-grid">
                 <!-- Dice Game Card -->
                 <a href="dice.php" class="game-card">
-                    <div class="game-card-icon">🎲</div>
+                    <div class="game-card-icon">
+                        <img src="img/icons/rolling-dices.svg" alt="Rolling Dices" class="card-svg" />
+                    </div>
                     <h2 class="game-card-title">Dice Betting</h2>
                     <p class="game-card-description">Predict patterns (Odd/Even, High/Low) or exact numbers. Roll the dice and win up to 10x your bet!</p>
                     <div class="game-card-features">
@@ -33,7 +38,9 @@ session_start();
                 
                 <!-- Blackjack Card -->
                 <a href="blackjack.php" class="game-card">
-                    <div class="game-card-icon">♠️</div>
+                    <div class="game-card-icon">
+                        <img src="img/icons/card-random.svg" alt="Card Random" class="card-svg" />
+                    </div>
                     <h2 class="game-card-title">Blackjack</h2>
                     <p class="game-card-description">Classic 21! Beat the dealer by getting closer to 21 without going over.</p>
                     <div class="game-card-features">
@@ -46,7 +53,9 @@ session_start();
                 
                 <!-- Slot Machine Card -->
                 <a href="slot.php" class="game-card">
-                    <div class="game-card-icon">🎰</div>
+                    <div class="game-card-icon">
+                        <img src="img/icons/slot-machine.svg" alt="Slot Machine" class="card-svg" />
+                    </div>
                     <h2 class="game-card-title">Slot Machine</h2>
                     <p class="game-card-description">Spin the reels and match symbols! Fruits, Lucky 7s, and Diamond Jackpots!</p>
                     <div class="game-card-features">
@@ -91,6 +100,16 @@ session_start();
             backdrop-filter: blur(10px);
         }
         
+        .hero-icon {
+            margin-bottom: 20px;
+        }
+        
+        .hero-svg {
+            width: 80px;
+            height: 80px;
+            filter: drop-shadow(0 0 10px rgba(74, 196, 125, 0.5));
+        }
+        
         .game-title {
             font-size: 3rem;
             font-weight: 800;
@@ -132,9 +151,19 @@ session_start();
         }
         
         .game-card-icon {
-            font-size: 4rem;
             text-align: center;
             margin-bottom: 20px;
+        }
+        
+        .card-svg {
+            width: 80px;
+            height: 80px;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+            transition: transform 0.3s ease;
+        }
+        
+        .game-card:hover .card-svg {
+            transform: scale(1.05);
         }
         
         .game-card-title {
@@ -218,6 +247,12 @@ session_start();
             
             .games-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .hero-svg,
+            .card-svg {
+                width: 60px;
+                height: 60px;
             }
         }
     </style>
