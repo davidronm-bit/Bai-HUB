@@ -24,14 +24,24 @@ Bai-HUB is a professional-grade casino gaming platform designed with a premium a
 - **Backend / API**: All game logic is processed server-side via PHP for security and consistency.
 - **Storage System**: Utilizes a persistent JSON-based data layer. The system is designed for high portability and includes "self-healing" logic that automatically generates the required directory structure and data files on the first run.
 
-### Directory Structure
+### Directory Structure (within Bai-HUB Final/)
 - `/api/`: PHP API endpoints for game actions and data storage.
 - `/data/`: Persistent storage for user balances, game history, and global metadata.
 - `/scripts/`: Client-side logic for games and the advertisement engine.
 - `/img/`: Visual assets, including icons and game-specific imagery.
 
-## Deployment Instructions
+## Recent Updates
 
-1. Deploy the project folder to any web server with PHP support (e.g., Apache, Nginx).
-2. No manual database configuration is required; the system will automatically initialize the `data/` directory and required JSON files upon the first page load.
-3. Ensure the web server has standard write permissions for the project root to facilitate automatic folder creation.
+### Mar 27, 2026
+- **Enhanced Platform Stability**: Implemented a "self-healing" JSON storage system that automatically generates the required directory structure and data files if they are missing.
+- **Ad System Overhaul**: Improved ad targeting to be game-specific and added a dynamic carousel of persuasive, high-conversion slogans.
+- **Security & Fair Play**: Added a mandatory 10-minute cooldown on ad credit claims and implemented a bet confirmation step for the Dice game to prevent accidental losses.
+- **Professional UI Cleanup**: System-wide removal of emojis from the game UI and replacement of browser-rendered card suit symbols with professional text-based identifiers.
+- **Asset Migration**: Reorganized the codebase by moving all client-side JavaScript assets into a dedicated `scripts/` directory.
+
+### Mar 26, 2026
+- **Bug Fixes**: Resolved various known bugs in the scoring and result evaluation logic across all three games.
+- **Code Optimization**: Merged the latest development branch and optimized internal API response structures.
+
+### Mar 24, 2026
+- **Initial Documentation**: Created the first comprehensive project guide and early-stage core logic updates to the gambling engine.
