@@ -129,7 +129,7 @@ function animateDiceRoll(rollData, stateAfter) {
                 }
 
                 renderState(stateAfter);
-                
+
                 // Show winning/losing notification
                 setTimeout(() => {
                     let icon = 'info';
@@ -144,8 +144,8 @@ function animateDiceRoll(rollData, stateAfter) {
 
                     Swal.fire({
                         title: title,
-                        text: rollData.status === 'win' 
-                            ? `Congratulations! You won ${parseFloat(rollData.payout).toFixed(2)} credits!` 
+                        text: rollData.status === 'win'
+                            ? `Congratulations! You won ${parseFloat(rollData.payout).toFixed(2)} credits!`
                             : 'Better luck next time!',
                         icon: icon,
                         confirmButtonText: 'Great!',
@@ -219,6 +219,22 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        const betDescription = currentBetType === 'number'
+            ? `Number ${currentBetValue}`
+            : (currentBetValue.charAt(0).toUpperCase() + currentBetValue.slice(1));
+
+        const { isConfirmed } = await Swal.fire({
+            title: 'Confirm Your Bet',
+            html: `You are about to bet <strong>${bet.toFixed(2)} credits</strong> on <strong>${betDescription}</strong>.<br>Are you sure?`,
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, Roll it!',
+            confirmButtonColor: '#4ac47d',
+            cancelButtonText: 'Wait, I need to change'
+        });
+
+        if (!isConfirmed) return;
+
         const res = await apiRequest('play', {
             bet_type: currentBetType,
             bet_value: currentBetValue,
@@ -244,15 +260,15 @@ document.addEventListener('DOMContentLoaded', () => {
             title: 'Dice Game Rules',
             html: `
                 <div style="text-align: left; line-height: 1.6;">
-                    <p>🎲 <strong>How to Play:</strong> Select a bet type and amount, then roll the dice!</p>
-                    <p>📈 <strong>Pattern Bets (2x Payout):</strong></p>
+                    <p><strong>How to Play:</strong> Select a bet type and amount, then roll the dice!</p>
+                    <p><strong>Pattern Bets (2x Payout):</strong></p>
                     <ul>
                         <li><strong>Odd/Even:</strong> Bet on the total sum being odd or even.</li>
                         <li><strong>Low (3-10):</strong> Bet on the total sum being between 3 and 10.</li>
                         <li><strong>High (11-18):</strong> Bet on the total sum being between 11 and 18.</li>
                     </ul>
-                    <p>🎯 <strong>Exact Number (10x Payout):</strong> Bet on the exact sum of the three dice (3-18).</p>
-                    <p>⚖️ <strong>Probabilities:</strong> Pattern bets have a 50% win probability. Exact numbers vary.</p>
+                    <p><strong>Exact Number (10x Payout):</strong> Bet on the exact sum of the three dice (3-18).</p>
+                    <p><strong>Probabilities:</strong> Pattern bets have a 50% win probability. Exact numbers vary.</p>
                 </div>
             `,
             icon: 'info',

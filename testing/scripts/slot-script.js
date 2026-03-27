@@ -65,7 +65,7 @@ function animateSlotSpin(spinData, stateAfter) {
     const placeBtn = document.getElementById('spinBtn');
 
     placeBtn.disabled = true;
-    placeBtn.innerHTML = '<span>🎰 Spinning...</span>';
+    placeBtn.innerHTML = '<span>Spinning...</span>';
     resultTextEl.textContent = 'Rolling...';
     resultTextEl.className = 'result-value';
 
@@ -103,7 +103,7 @@ function animateSlotSpin(spinData, stateAfter) {
             }
 
             renderState(stateAfter);
-            
+
             // Show winning/losing notification
             setTimeout(() => {
                 let icon = 'info';
@@ -118,8 +118,8 @@ function animateSlotSpin(spinData, stateAfter) {
 
                 Swal.fire({
                     title: title,
-                    text: spinData.win 
-                        ? `Congratulations! You won ${parseFloat(spinData.payout).toFixed(2)} credits!` 
+                    text: spinData.win
+                        ? `Congratulations! You won ${parseFloat(spinData.payout).toFixed(2)} credits!`
                         : 'Better luck next time!',
                     icon: icon,
                     confirmButtonText: 'Great!',
@@ -129,7 +129,7 @@ function animateSlotSpin(spinData, stateAfter) {
             }, 300);
 
             placeBtn.disabled = false;
-            placeBtn.innerHTML = '🎰 SPIN 🎰';
+            placeBtn.innerHTML = 'SPIN';
             isSpinning = false;
         }
     }, 100);
@@ -189,14 +189,14 @@ document.addEventListener('DOMContentLoaded', () => {
             title: 'Slot Machine Payouts',
             html: `
                 <div style="text-align: left; line-height: 1.6;">
-                    <p>🎰 <strong>How to Win:</strong> Get 3 matching symbols in a row!</p>
-                    <p>🌟 <strong>Wild Symbol:</strong> The Star symbol is WILD and substitutes for any other symbol.</p>
+                    <p><strong>How to Win:</strong> Get 3 matching symbols in a row!</p>
+                    <p><strong>Wild Symbol:</strong> The Star symbol is WILD and substitutes for any other symbol.</p>
                     <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 10px 0;">
-                    <p>🍇 <strong>3 Grapes:</strong> 1.5x bet (~1 in 10 spins)</p>
-                    <p>🍊 <strong>3 Oranges:</strong> 1.5x bet (~1 in 10 spins)</p>
-                    <p>🍀 <strong>3 Clovers:</strong> 3x bet (~1 in 25 spins)</p>
-                    <p>💎 <strong>3 Diamonds:</strong> 5x bet (~1 in 150 spins)</p>
-                    <p>🌟 <strong>3 Stars:</strong> 10x bet (~1 in 1000 spins)</p>
+                    <p><strong>3 Grapes:</strong> 1.5x bet (~1 in 10 spins)</p>
+                    <p><strong>3 Oranges:</strong> 1.5x bet (~1 in 10 spins)</p>
+                    <p><strong>3 Clovers:</strong> 3x bet (~1 in 25 spins)</p>
+                    <p><strong>3 Diamonds:</strong> 5x bet (~1 in 150 spins)</p>
+                    <p><strong>3 Stars:</strong> 10x bet (~1 in 1000 spins)</p>
                 </div>
             `,
             icon: 'info',

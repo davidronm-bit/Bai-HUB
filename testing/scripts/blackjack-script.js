@@ -65,7 +65,7 @@ function renderState(state) {
             const isPush = round.status === 'push';
             const sign = isWin ? '+' : (isPush ? '±' : '-');
             let amount = 0;
-            
+
             if (isWin) amount = parseFloat(round.payout) - parseFloat(round.bet);
             else if (isPush) amount = 0;
             else amount = parseFloat(round.bet);
@@ -91,7 +91,7 @@ function renderState(state) {
         playingActions.style.display = 'block';
 
         const doubleBtn = document.getElementById('doubleBtn');
-        if (gameData.playerHand.length === 2 && balance >= state.currentBet) {
+        if (gameData.playerHand.length === 2 && balance >= state.currentBet * 2) {
             doubleBtn.style.display = 'inline-block';
         } else {
             doubleBtn.style.display = 'none';
@@ -182,11 +182,11 @@ document.addEventListener('DOMContentLoaded', () => {
             title: 'Blackjack Rules',
             html: `
                 <div style="text-align: left; line-height: 1.6;">
-                    <p>🎯 <strong>Objective:</strong> Beat the dealer's hand without going over 21.</p>
-                    <p>💎 <strong>Payout:</strong> Blackjack (21 with first 2 cards) pays <strong>2.5x</strong> your bet.</p>
-                    <p>🃏 <strong>Dealer Rule:</strong> Dealer must stand on <strong>17</strong> or higher.</p>
-                    <p>🔄 <strong>Push:</strong> If you and the dealer have the same total, it's a push and your bet is returned.</p>
-                    <p>⚖️ <strong>Odds:</strong> Win Probability is ~42.22% (House Edge ~0.5%).</p>
+                    <p><strong>Objective:</strong> Beat the dealer's hand without going over 21.</p>
+                    <p><strong>Payout:</strong> Blackjack (21 with first 2 cards) pays <strong>2.5x</strong> your bet.</p>
+                    <p><strong>Dealer Rule:</strong> Dealer must stand on <strong>17</strong> or higher.</p>
+                    <p><strong>Push:</strong> If you and the dealer have the same total, it's a push and your bet is returned.</p>
+                    <p><strong>Odds:</strong> Win Probability is ~42.22% (House Edge ~0.5%).</p>
                 </div>
             `,
             icon: 'info',

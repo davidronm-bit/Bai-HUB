@@ -1164,10 +1164,12 @@ body::before {
 
 .fake-ad {
     flex: 1;
-    background: linear-gradient(135deg, rgba(15, 22, 38, 0.95) 0%, rgba(30, 45, 75, 0.85) 100%);
-    border: 1px solid rgba(74, 196, 125, 0.4);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 2px solid rgba(74, 196, 125, 0.4);
     border-radius: 16px;
-    backdrop-filter: blur(16px);
+    backdrop-filter: blur(4px);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1180,8 +1182,39 @@ body::before {
     text-decoration: none;
     overflow: hidden;
     position: relative;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
     opacity: 1;
+    color: #fff;
+}
+
+/* Pseudo-overlay for better text readability */
+.fake-ad::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.8) 100%);
+    z-index: 1;
+}
+
+.fake-ad>* {
+    position: relative;
+    z-index: 2;
+}
+
+.fake-ad.glow {
+    animation: adGlow 3s infinite alternate;
+}
+
+@keyframes adGlow {
+    0% {
+        box-shadow: 0 0 10px rgba(74, 196, 125, 0.4);
+        border-color: rgba(74, 196, 125, 0.4);
+    }
+
+    100% {
+        box-shadow: 0 0 25px rgba(74, 196, 125, 0.8);
+        border-color: rgba(74, 196, 125, 1);
+    }
 }
 
 .fake-ad.fade-out {
@@ -1209,9 +1242,13 @@ body::before {
 }
 
 .fake-ad-icon {
-    font-size: 2.5rem;
+    width: 60px;
+    height: 60px;
+    margin-top: 12px;
     margin-bottom: 12px;
+    padding: 10px;
     filter: drop-shadow(0 0 8px rgba(74, 196, 125, 0.4));
+    object-fit: contain;
 }
 
 .fake-ad-text {
@@ -1222,7 +1259,7 @@ body::before {
     margin-bottom: 12px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .fake-ad-subtext {
@@ -1242,7 +1279,7 @@ body::before {
     font-size: 0.85rem;
     font-weight: 800;
     transition: all 0.3s;
-    border: 1px solid rgba(255,255,255,0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .fake-ad:hover .fake-ad-button {
@@ -1250,8 +1287,8 @@ body::before {
     box-shadow: 0 4px 12px rgba(74, 196, 125, 0.3);
 }
 
-@media (max-width: 1600px) {
+@media (max-width: 900px) {
     .fake-ad-container {
         display: none;
     }
-}
+}
